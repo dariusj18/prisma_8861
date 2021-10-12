@@ -5,13 +5,3 @@ export const userIds = {
   editor1: '7d8e2b5d-4f7c-4ec0-b778-6ab119172d9a',
   editor2: '29f39eac-c900-49f9-b16b-87e498fc857f',
 };
-
-export const tagIds = {
-  postType: {
-    blog: '3767db20-9904-4e7c-a19d-43f08c00424e',
-    video: 'c2507b02-002c-4371-931b-de5aacc5c437',
-  },
-  category: {
-    featured: 'eae03108-9845-490e-b306-d61b08701f4d',
-  },
-};

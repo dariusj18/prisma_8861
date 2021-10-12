@@ -1,5 +1,5 @@
-import { PrismaClient, TagType, UserType } from '@prisma/client';
-import { tagIds, userIds } from '../constants';
+import { PrismaClient, UserType } from '@prisma/client';
+import { userIds } from '../constants';
 
 const prisma = new PrismaClient({
   log: [
@@ -34,40 +34,6 @@ const main = async () => {
         id: userIds.publisher1,
         username: 'publisher1',
         type: UserType.PUBLISHER,
-        tags: {
-          connectOrCreate: [
-            {
-              where: {
-                id: tagIds.postType.blog,
-              },
-              create: {
-                id: tagIds.postType.blog,
-                name: 'blog',
-                type: TagType.POSTTYPE,
-              },
-            },
-            {
-              where: {
-                id: tagIds.postType.video,
-              },
-              create: {
-                id: tagIds.postType.video,
-                name: 'video',
-                type: TagType.POSTTYPE,
-              },
-            },
-            {
-              where: {
-                id: tagIds.category.featured,
-              },
-              create: {
-                id: tagIds.category.featured,
-                name: 'featured',
-                type: TagType.CATEGORY,
-              },
-            },
-          ],
-        },
       },
     }),
     prisma.user.upsert({
