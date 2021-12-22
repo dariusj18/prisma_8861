@@ -10,23 +10,20 @@ const prisma = new PrismaClient({
 })
 
 async function main() {
-  const posts = await prisma.post.findMany({
-    skip: 0,
-    take: 10,
-    include: {
-      user: {
-        include: {
-          _count: {
-            select: {
-              posts: true,
-            }
-          }
+  const post = await prisma.post.create({
+    data: {
+      title: 'test',
+      user: { connect: { id: '62edd1de-868b-4698-b802-b7eb030ace4e' } },
+      postMetas: {
+        create: {
+          id: 'af959e43-60f2-4d7b-aad4-ba3f7b11c9e1',
+          user: { connect: { id: '62edd1de-868b-4698-b802-b7eb030ace4e'} }, // This shouldn't be required
         }
       }
     }
   });
 
-  console.log(posts);
+  console.log(post);
   
 }
 

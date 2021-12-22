@@ -5,14 +5,17 @@
     "start": "ts-node index.ts",
     "ts-node": "ts-node"
   },
+  "prisma": {
+    "seed": "./node_modules/.bin/ts-node prisma/seed.ts"
+  },
   "author": "",
   "devDependencies": {
     "@types/node": "^16.7.1",
-    "prisma": "^2.30.0",
+    "prisma": "^3.7.0",
     "ts-node": "^10.2.1",
     "typescript": "^4.3.5"
   },
   "dependencies": {
-    "@prisma/client": "^2.30.0"
+    "@prisma/client": "^3.7.0"
   }
 }
