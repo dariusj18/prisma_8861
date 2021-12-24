@@ -25,10 +25,22 @@ CREATE TABLE "PostMeta" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "is_deleted" BOOLEAN NOT NULL DEFAULT false,
+    "typeId" UUID NOT NULL,
     "userId" UUID NOT NULL,
     "postId" UUID NOT NULL,
 
     CONSTRAINT "PostMeta_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "PostMetaType" (
+    "id" UUID NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+    "is_deleted" BOOLEAN NOT NULL DEFAULT false,
+    "title" TEXT NOT NULL,
+
+    CONSTRAINT "PostMetaType_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -45,3 +57,6 @@ ALTER TABLE "PostMeta" ADD CONSTRAINT "PostMeta_userId_fkey" FOREIGN KEY ("userI
 
 -- AddForeignKey
 ALTER TABLE "PostMeta" ADD CONSTRAINT "PostMeta_postId_userId_fkey" FOREIGN KEY ("postId", "userId") REFERENCES "Post"("id", "userId") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "PostMeta" ADD CONSTRAINT "PostMeta_typeId_fkey" FOREIGN KEY ("typeId") REFERENCES "PostMetaType"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

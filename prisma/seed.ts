@@ -34,6 +34,12 @@ const main = async () => {
       }
     }
   });
+  const postMetaType = await prisma.postMetaType.create({
+    data: {
+      id: 'a38e3f17-cf6d-43f0-89ba-2673d0c77050',
+      title: 'Test Type',
+    }
+  })
 };
 
 main()
